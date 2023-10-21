@@ -9,29 +9,29 @@ const path = require('path')
 const { spawnSync } = require('child_process')
 const util = require('../lib/util')
 
-Log.progress('Performing initial checkout of brave-core')
+Log.progress('Performing initial checkout of express-core')
 
-const braveCoreDir = path.resolve(__dirname, '..', 'src', 'brave')
-const braveCoreRef = util.getProjectVersion('brave-core')
+const expressCoreDir = path.resolve(__dirname, '..', 'src', 'express')
+const expressCoreRef = util.getProjectVersion('express-core')
 
-if (!fs.existsSync(path.join(braveCoreDir, '.git'))) {
-  Log.status(`Cloning brave-core [${braveCoreRef}] into ${braveCoreDir}...`)
-  fs.mkdirSync(braveCoreDir)
-  util.runGit(braveCoreDir, ['clone', util.getNPMConfig(['projects', 'brave-core', 'repository', 'url']), '.'])
-  util.runGit(braveCoreDir, ['checkout', braveCoreRef])
+if (!fs.existsSync(path.join(expressCoreDir, '.git'))) {
+  Log.status(`Cloning express-core [${expressCoreRef}] into ${expressCoreDir}...`)
+  fs.mkdirSync(expressCoreDir)
+  util.runGit(expressCoreDir, ['clone', util.getNPMConfig(['projects', 'express-core', 'repository', 'url']), '.'])
+  util.runGit(expressCoreDir, ['checkout', expressCoreRef])
 }
-const braveCoreSha = util.runGit(braveCoreDir, ['rev-parse', 'HEAD'])
-Log.progress(`brave-core repo at ${braveCoreDir} is at commit ID ${braveCoreSha}`)
+const expressCoreSha = util.runGit(expressCoreDir, ['rev-parse', 'HEAD'])
+Log.progress(`express-core repo at ${expressCoreDir} is at commit ID ${expressCoreSha}`)
 
 let npmCommand = 'npm'
 if (process.platform === 'win32') {
   npmCommand += '.cmd'
 }
 
-util.run(npmCommand, ['install'], { cwd: braveCoreDir })
+util.run(npmCommand, ['install'], { cwd: expressCoreDir })
 
 util.run(npmCommand, ['run', 'sync' ,'--', '--init'].concat(process.argv.slice(2)), {
-  cwd: braveCoreDir,
+  cwd: expressCoreDir,
   env: process.env,
   stdio: 'inherit',
   shell: true,

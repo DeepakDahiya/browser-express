@@ -19,9 +19,9 @@
 
 # -- Project information -----------------------------------------------------
 
-author = 'Brave Software'
+author = 'Browser Express'
 project = 'Brave browser'
-copyright = '2023, Brave Software'
+copyright = '2023, Browser Express'
 
 # The short X.Y version
 version = ''
