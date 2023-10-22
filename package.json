@@ -235,7 +235,7 @@
     "projects": {
       "express-core": {
         "dir": "src/brave",
-        "branch": "master",
+        "branch": "deepak/initial-brave-cleanup",
         "repository": {
           "url": "https://github.com/DeepakDahiya/express-core.git"
         }
