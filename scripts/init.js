@@ -11,7 +11,7 @@ const util = require('../lib/util')
 
 Log.progress('Performing initial checkout of express-core')
 
-const expressCoreDir = path.resolve(__dirname, '..', 'src', 'express')
+const expressCoreDir = path.resolve(__dirname, '..', 'src', 'brave')
 const expressCoreRef = util.getProjectVersion('express-core')
 
 if (!fs.existsSync(path.join(expressCoreDir, '.git'))) {
